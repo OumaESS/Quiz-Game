@@ -123,12 +123,12 @@ public class Quiz implements ActionListener{
 	public Quiz() {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(650,650);
-		frame.getContentPane().setBackground(new Color(128, 139, 150));
+		frame.getContentPane().setBackground(new Color(0, 0, 0));
 		frame.setLayout(null);
 		frame.setResizable(false);
 		
 		textfield.setBounds(0,0,650,50);
-		textfield.setBackground(new Color(128, 0, 128));
+		textfield.setBackground(new Color(255, 0, 0));
 		textfield.setForeground(new Color(255, 230, 51));
 		textfield.setFont(new Font("Ink Free",Font.BOLD,30));
 		textfield.setBorder(BorderFactory.createBevelBorder(1));
@@ -138,7 +138,7 @@ public class Quiz implements ActionListener{
 		textarea.setBounds(0,50,650,50);
 		textarea.setLineWrap(true);
 		textarea.setWrapStyleWord(true);
-		textarea.setBackground(new Color(128, 0, 128));
+		textarea.setBackground(new Color(255, 0, 0));
 		textarea.setForeground(new Color(255, 230, 51));
 		textarea.setFont(new Font("MV Boli",Font.BOLD,25));
 		textarea.setBorder(BorderFactory.createBevelBorder(1));
