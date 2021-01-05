@@ -71,20 +71,20 @@ public class Quiz implements ActionListener{
 							};
 	char[] answers = 		{
 			'A',
-			'B',
-			'C',
-			'A',
-			'A',
-			'B',
-			'C',
-			'A',
-			'B',
-			'A',
-			'C',
-			'A',
-			'B',
-			'C',
-			'C'
+            'C',
+            'B',
+            'A',
+            'A',
+            'A',
+            'C',
+            'A',
+            'C',
+            'B',
+            'A',
+            'A',
+            'B',
+            'A',
+            'B'
 							};
 	char guess;
 	char answer;
@@ -123,13 +123,13 @@ public class Quiz implements ActionListener{
 	public Quiz() {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(650,650);
-		frame.getContentPane().setBackground(new Color(50,50,50));
+		frame.getContentPane().setBackground(new Color(128, 139, 150));
 		frame.setLayout(null);
 		frame.setResizable(false);
 		
 		textfield.setBounds(0,0,650,50);
-		textfield.setBackground(new Color(25,25,25));
-		textfield.setForeground(new Color(25,255,0));
+		textfield.setBackground(new Color(128, 0, 128));
+		textfield.setForeground(new Color(255, 230, 51));
 		textfield.setFont(new Font("Ink Free",Font.BOLD,30));
 		textfield.setBorder(BorderFactory.createBevelBorder(1));
 		textfield.setHorizontalAlignment(JTextField.CENTER);
@@ -138,8 +138,8 @@ public class Quiz implements ActionListener{
 		textarea.setBounds(0,50,650,50);
 		textarea.setLineWrap(true);
 		textarea.setWrapStyleWord(true);
-		textarea.setBackground(new Color(25,25,25));
-		textarea.setForeground(new Color(25,255,0));
+		textarea.setBackground(new Color(128, 0, 128));
+		textarea.setForeground(new Color(255, 230, 51));
 		textarea.setFont(new Font("MV Boli",Font.BOLD,25));
 		textarea.setBorder(BorderFactory.createBevelBorder(1));
 		textarea.setEditable(false);
