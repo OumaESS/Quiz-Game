@@ -194,7 +194,6 @@ public class Quiz implements ActionListener {
 			results();
 		} else
 			for (int i = 0; i < questions.length; i++) {
-				// if(options[index].length!=2) {
 
 				textfield.setText("Question " + (nextqust + 1) + "/" + 15);
 				textarea.setText(questions[index]);
@@ -202,7 +201,7 @@ public class Quiz implements ActionListener {
 				answer_labelB.setText(options[index][1]);
 				answer_labelC.setText(options[index][2]);
 				timer.start();
-				// }
+				
 				if (index <= 5) {
 					niveau.setText("N1");
 				} else if (index <= 11) {
@@ -307,4 +306,3 @@ public class Quiz implements ActionListener {
 
 	}
 }
-
