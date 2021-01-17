@@ -1,4 +1,4 @@
-package desplayQuiz;
+package com.quiz;
 
 import java.awt.event.*;
 import java.awt.*;
@@ -6,43 +6,64 @@ import javax.swing.*;
 
 public class Quiz implements ActionListener {
 
-	String[] questions = { "JAVA est un langage", "Toutes les classes héritent de la classe",
-			"Par convention une classe ", "Est-ce que on peut avoir plusieurs constructeurs pour la même classe ",
-			"Dans la ligne public class A implements B, B est:",
-			"Class Test{\r\n" + "Public Test () {\r\n" + "System.out.println(”Bonjour”);}\r\n"
-					+ "public Test (int i) {\r\n" + "this();\r\n"
-					+ "System.out.println(”Nous sommes en ”+i+ ” !”);};\r\n" + "}\r\n"
-					+ "qu’affichera l’instruction suivante?\r\n" + "Test t1=new Test (2018);\r\n" + "",
+	String[] questions = {
+			"<html>JAVA est un langage</html>",
+			"<html>Toutes les classes héritent de la classe</html>",
+			"<html>Par convention une classe</html>",
+			"<html>Est-ce que on peut avoir constructeurs pour la même classe</html>",
+			"<html>Dans la ligne public class A implements B, B est :</html>",
+			"",
+			"<html>Après la compilation, un programme écrit en JAVA, il se transforme en programme en bytecode Quelle est l’extension du programme en bytecode ?</html>",
+			"<html>Class Test{Public Test () {System.out.println(”Bonjour”);} public Test (int i) {this(); System.out.println(”Nous sommes en ”+i+ ” !”);};} qu’affichera l’instruction suivante? Test t1=new Test (2018);</html>",
+			"<html>Voici un constructeur de la classe Employee, y-a t'il un problème ? Public void Employe(String n){Nom=n;}</html>",
+			"<html>Pour spécifier que la variable ne pourra plus être modifiée et doit être initialisée dès sa déclaration, on la déclare comme une constante avec le mot réservé</html>",
+			"<html>Dans une classe, on accède à ses variables grâce au mot clé</html>",
+			"",
+			"<html>calculerSalaire(int) / calculerSalaire(int, double) \n La méthode calculerSalaire est : </html>",
+			"<html>Une classe qui contient au moins une méthode abstraite doit être déclarée abstraite.</html>",
+			"<html>Est-ce qu’une classe peut implémenter plusieurs interfaces ?</html>",
+			"<html>La déclaration d'une méthode suivante :public void traitement() throws IOException précise que la méthode propage une exception contrôlée</html>",
+			"<html>class Test{public static void main (String[] args) {try {int a =10; System.out.println (a = + a );int b = 0 / a;System.out.println (b = +b);}catch(ArithmeticException e){System.out.println (diviser par 0!); }finally {System.out.println (je suis à l’intérieur de finally);}}</html>"
+			
+	};
+	String[][] options = { {"Compilé","Interprété", "Compilé et interpreté"},
+			{"Main","Object", "AWT"},
+			{"est en minuscule","commence par une majuscule", "est en majuscules"},
+			{"Oui","Non","aucun des choix"},
+			{"Interfacce","Classe parent", "Package"},
+			{},
+			{"aucun des choix", ".JAVA", ".Class"},
+			{"aucun des choix", "Boujour Nous sommes en 2018", "Nous sommes en 2018"},
+			{"vrai", "fuax","aucun des choix"},
+			{"aucun des choix", "final", "const"},
+			{"aucun des choix", "this", "super"},
+			{},
+			{"aucun des choix", "surchargée", "redéfinie"},
+			{"vrai", "faux","aucun des choix"},
+			{"vrai", "faux","aucun des choix"},
+			{"vrai", "faux","aucun des choix"},
+			{"aucun des choix","a=10 b=0 je suis à l’intérieur de finally" ,"a=10 b=0 diviser par 0! je suis à l’intérieur de finally"}
+		};
+	char[] answers = { 
+			'A',
+			'C',
+			'B',
+			'A',
+			'A',
+			' ',
+			'A',
+			'C',
+			'A',
+			'C',
+			'B',
+			' ',
+			'A',
+			'A',
+			'B',
+			'A',
+			'B'};
 
-			"Voici un constructeur de la classe Employee, y-at'il un problème ?\r\n"
-					+ "Public void Employe(String n){\r\n" + "Nom=n;}",
-			"Pour spécifier que la variable ne pourra plus être modifiée et doit être initialisée dès sa déclaration, on la déclare comme une constante avec le mot réservé",
-			"Dans une classe, on accède à ses variables grâce au mot clé",
-			"calculerSalaire(int)\r\n" + "calculerSalaire(int, double)\r\n" + "La méthode calculerSalaire est :",
-			"Une classe qui contient au moins une méthode abstraite doit être déclarée abstraite.",
-			"Est-ce qu’une classe peut implémenter plusieurs interfaces ?",
-			"La déclaration d'une méthode suivante :\r\n" + "public void traitement() throws IOException\r\n"
-					+ "précise que la méthode propage une exception\r\n" + "contrôlée\r\n" + "",
-			"class Test{\r\n" + "public static void main (String[] args) {\r\n" + "try {\r\n" + "int a =10;\r\n"
-					+ "System.out.println (\"a = \" + a );\r\n" + "int b = 0 / a;\r\n"
-					+ "System.out.println (\"b = \" + b);\r\n" + "}\r\n" + "catch(ArithmeticException e)\r\n"
-					+ "{System.out.println (\"diviser par 0!\"); }\r\n" + "finally\r\n"
-					+ "{System.out.println (\"je suis à l’intérieur de\r\n" + "finally\");}}}" };
-	String[][] options = { { "Compilé", "Interprété", "Compilé et interpreté" }, { "Main", "Object", "AWT" },
-			{ "est en minuscule", "commence par une majuscule", "est en majuscule" }, { "oui", "non" },
-			{ "interface", "Class parent", "Package" },
-			{ "Après la compilation, un programme écrit en JAVA, il se transforme en programme en bytecode Quelle est l’extension du programme en bytecode?" },
-			{ "aucun des choix", ".JAVA", ".Class" },
-			{ "aucun des choix", "Bonjour Nous sommes en 2018!", "Nous sommes en 2018!" },
-			{ "vrai", "faux", "aucun des choix" }, { "aucun des choix", "final", "const" },
-			{ "aucun des choix", "this", "super" }, { "aucun des choix", "surchargée", "redéfinie" },
-			{ "vrai", "faux", "aucun des choix" }, { "vrai", "faux", "aucun des choix" },
-			{ "vrai", "faux", "aucun des choix" }, { "aucun des choix", "a=10 b=0 Je suis à l’intérieur de finally",
-					"a=10 b=0 diviser par 0! je suis à l’intérieur de finally" } };
-	char[] answers = { 'A', 'C', 'B', 'A', 'A', 'A', 'C', 'A', 'C', 'B', 'A', 'A', 'B', 'A', 'B' };
-	char guess;
 	char answer;
-	int nextqust;
 	int index;
 	int correct_guesses = 0;
 	int total_questions = questions.length;
@@ -51,19 +72,23 @@ public class Quiz implements ActionListener {
 
 	JFrame frame = new JFrame();
 	JTextField textfield = new JTextField();
-	JTextArea textarea = new JTextArea();
+	JLabel jlabel = new JLabel();
+
 	JButton buttonA = new JButton();
 	JButton buttonB = new JButton();
 	JButton buttonC = new JButton();
+
 	JLabel answer_labelA = new JLabel();
 	JLabel answer_labelB = new JLabel();
 	JLabel answer_labelC = new JLabel();
-	JLabel time_label = new JLabel();
+
+	JTextField niveau = new JTextField();
+
+	//JLabel time_label = new JLabel();
 	JLabel seconds_left = new JLabel();
-	JLabel label = new JLabel();
 	JTextField number_right = new JTextField();
 	JTextField percentage = new JTextField();
-	JTextField niveau = new JTextField();
+
 	Timer timer = new Timer(1000, new ActionListener() {
 
 		@Override
@@ -78,69 +103,71 @@ public class Quiz implements ActionListener {
 
 	public Quiz() {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(650, 650);
+		frame.setSize(750, 750);
 		frame.getContentPane().setBackground(new Color(0, 0, 0));
 		frame.setLayout(null);
+		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 
-		textfield.setBounds(0, 0, 650, 50);
-		textfield.setBackground(new Color(255, 0, 0));
-		textfield.setForeground(new Color(255, 230, 51));
+		// TEXTFIALD NQ
+		textfield.setBounds(0, 0, 750, 50);
+		textfield.setBackground(new Color(25, 25, 25));
+		textfield.setForeground(new Color(25, 255, 0));
 		textfield.setFont(new Font("Ink Free", Font.BOLD, 30));
 		textfield.setBorder(BorderFactory.createBevelBorder(1));
 		textfield.setHorizontalAlignment(JTextField.CENTER);
 		textfield.setEditable(false);
 
-		// niveau
-		niveau.setBounds(255, 455, 130, 50);
-		niveau.setBackground(null);
-		niveau.setForeground(Color.green);
-		niveau.setFont(new Font("MV Boli", Font.BOLD, 50));
-		niveau.setEditable(false);
-		niveau.setHorizontalAlignment(JTextField.CENTER);
+		// QUESTIONS
+		jlabel.setBounds(10,30,610,140);
+		jlabel.setForeground(Color.white);
+		jlabel.setFont(new Font("MV Boli", Font.BOLD, 20));
+		jlabel.setHorizontalAlignment(JTextField.CENTER);
 
-		textarea.setBounds(0, 50, 650, 50);
-		textarea.setLineWrap(true);
-		textarea.setWrapStyleWord(true);
-		textarea.setBackground(new Color(255, 0, 0));
-		textarea.setForeground(new Color(255, 230, 51));
-		textarea.setFont(new Font("MV Boli", Font.BOLD, 25));
-		textarea.setBorder(BorderFactory.createBevelBorder(1));
-		textarea.setEditable(false);
-
-		buttonA.setBounds(0, 100, 100, 100);
+		// BUTTONS
+		buttonA.setBounds(0, 180, 100, 100);
 		buttonA.setFont(new Font("MV Boli", Font.BOLD, 35));
 		buttonA.setFocusable(false);
 		buttonA.addActionListener(this);
 		buttonA.setText("A");
 
-		buttonB.setBounds(0, 200, 100, 100);
+		buttonB.setBounds(0, 280, 100, 100);
 		buttonB.setFont(new Font("MV Boli", Font.BOLD, 35));
 		buttonB.setFocusable(false);
 		buttonB.addActionListener(this);
 		buttonB.setText("B");
 
-		buttonC.setBounds(0, 300, 100, 100);
+		buttonC.setBounds(0, 380, 100, 100);
 		buttonC.setFont(new Font("MV Boli", Font.BOLD, 35));
 		buttonC.setFocusable(false);
 		buttonC.addActionListener(this);
 		buttonC.setText("C");
 
-		answer_labelA.setBounds(125, 100, 500, 100);
+		// ANSWERS
+		answer_labelA.setBounds(125, 180, 500, 100);
 		answer_labelA.setBackground(new Color(50, 50, 50));
 		answer_labelA.setForeground(new Color(25, 255, 0));
 		answer_labelA.setFont(new Font("MV Boli", Font.PLAIN, 35));
 
-		answer_labelB.setBounds(125, 200, 500, 100);
+		answer_labelB.setBounds(125, 280, 500, 100);
 		answer_labelB.setBackground(new Color(50, 50, 50));
 		answer_labelB.setForeground(new Color(25, 255, 0));
 		answer_labelB.setFont(new Font("MV Boli", Font.PLAIN, 35));
 
-		answer_labelC.setBounds(125, 300, 500, 100);
+		answer_labelC.setBounds(125, 380, 500, 100);
 		answer_labelC.setBackground(new Color(50, 50, 50));
 		answer_labelC.setForeground(new Color(25, 255, 0));
 		answer_labelC.setFont(new Font("MV Boli", Font.PLAIN, 35));
 
+		// niveau
+		niveau.setBounds(255, 500, 130, 50);
+		niveau.setBackground(null);
+		niveau.setForeground(Color.green);
+		niveau.setFont(new Font("MV Boli", Font.BOLD, 50));
+		// niveau.setEditable(false);
+		niveau.setHorizontalAlignment(JTextField.CENTER);
+
+		// Time
 		seconds_left.setBounds(535, 510, 100, 100);
 		seconds_left.setBackground(new Color(25, 25, 25));
 		seconds_left.setForeground(new Color(255, 0, 0));
@@ -149,13 +176,12 @@ public class Quiz implements ActionListener {
 		seconds_left.setOpaque(true);
 		seconds_left.setHorizontalAlignment(JTextField.CENTER);
 		seconds_left.setText(String.valueOf(seconds));
-//		
-//		time_label.setBounds(535,475,100,25);
-//		time_label.setBackground(new Color(50,50,50));
-//		time_label.setForeground(new Color(255,0,0));
-//		time_label.setFont(new Font("MV Boli",Font.PLAIN,16));
+
+//		time_label.setBounds(535, 475, 100, 25);
+//		time_label.setBackground(new Color(50, 50, 50));
+//		time_label.setForeground(new Color(255, 0, 0));
+//		time_label.setFont(new Font("MV Boli", Font.PLAIN, 16));
 //		time_label.setHorizontalAlignment(JTextField.CENTER);
-//		time_label.setText("timer >:D");
 
 		number_right.setBounds(225, 225, 200, 100);
 		number_right.setBackground(new Color(25, 25, 25));
@@ -173,7 +199,7 @@ public class Quiz implements ActionListener {
 		percentage.setHorizontalAlignment(JTextField.CENTER);
 		percentage.setEditable(false);
 
-		frame.add(time_label);
+		//frame.add(time_label);
 		frame.add(seconds_left);
 		frame.add(answer_labelA);
 		frame.add(answer_labelB);
@@ -181,7 +207,7 @@ public class Quiz implements ActionListener {
 		frame.add(buttonA);
 		frame.add(buttonB);
 		frame.add(buttonC);
-		frame.add(textarea);
+		frame.add(jlabel);
 		frame.add(textfield);
 		frame.setVisible(true);
 		frame.add(niveau);
@@ -190,26 +216,25 @@ public class Quiz implements ActionListener {
 	}
 
 	public void nextQuestion() {
-		if (index >= total_questions) {
+
+		if(index==5 || index==11 || index==17){
 			results();
-		} else
-			for (int i = 0; i < questions.length; i++) {
-
-				textfield.setText("Question " + (nextqust + 1) + "/" + 15);
-				textarea.setText(questions[index]);
-				answer_labelA.setText(options[index][0]);
-				answer_labelB.setText(options[index][1]);
-				answer_labelC.setText(options[index][2]);
-				timer.start();
-				
-				if (index <= 5) {
+		}
+		else{
+				{
+					textfield.setText("Question " + (index + 1)+ "/" + 15 );
+					jlabel.setText(questions[index]);
+					answer_labelA.setText(options[index][0]);
+					answer_labelB.setText(options[index][1]);
+					answer_labelC.setText(options[index][2]);
+					timer.start();
+				}
+				if (index <= 4) {
 					niveau.setText("N1");
-				} else if (index <= 11) {
+				} else if (index <=9) {
 					niveau.setText("N2");
-				} else if (index <= 17) {
+				} else if (index <= 14) {
 					niveau.setText("N3");
-
-//		}
 				}
 			}
 	}
@@ -239,7 +264,6 @@ public class Quiz implements ActionListener {
 				correct_guesses++;
 			}
 		}
-
 		displayAnswer();
 	}
 
@@ -257,9 +281,8 @@ public class Quiz implements ActionListener {
 			answer_labelB.setForeground(new Color(255, 0, 0));
 		if (answers[index] != 'C')
 			answer_labelC.setForeground(new Color(255, 0, 0));
-		nextqust++;
 
-		Timer pause = new Timer(2000, new ActionListener() {
+		Timer pause = new Timer(1000, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -282,27 +305,75 @@ public class Quiz implements ActionListener {
 		pause.start();
 	}
 
+
 	public void results() {
+		
+		
+		
+		
+		
+		
+		if(index==5 && correct_guesses<=3){
+			buttonA.setVisible(false);
+			buttonB.setVisible(false);
+			buttonC.setVisible(false);
+			niveau.setVisible(false);
+			percentage.setVisible(false);
+			
+			answer_labelA.setText("");
+			answer_labelB.setText("");
+			answer_labelC.setText("");
+			
+			jlabel.setText("");
+			seconds_left.setVisible(false);
+			number_right.setText("LOSER");
+			frame.add(number_right);
+			
+		}else if(index==11 && correct_guesses<=7){
+			buttonA.setVisible(false);
+			buttonB.setVisible(false);
+			buttonC.setVisible(false);
+			niveau.setVisible(false);
+			percentage.setVisible(false);
+			
+			jlabel.setText("");
+			seconds_left.setText("");
+			answer_labelA.setText("");
+			answer_labelB.setText("");
+			answer_labelC.setText("");			number_right.setText("LOSER");
+			frame.add(number_right);
+		}
+		else if(index==17){
+			if(correct_guesses<=12){
+				buttonA.setVisible(false);
+				buttonB.setVisible(false);
+				buttonC.setVisible(false);
+				niveau.setVisible(false);
+				percentage.setVisible(false);
+				
+				jlabel.setText("");
+				seconds_left.setText("");
+				answer_labelA.setText("");
+				answer_labelB.setText("");
+				answer_labelC.setText("");				number_right.setText("LOSER");
+				frame.add(number_right);
+			}
+			else{
+				System.out.println(correct_guesses);
+				buttonA.setVisible(false);
+				buttonB.setVisible(false);
+				buttonC.setVisible(false);
+				niveau.setVisible(false);
+				percentage.setVisible(false);
+				
+				jlabel.setText("");
+				seconds_left.setText("");
+				answer_labelA.setText("");
+				answer_labelB.setText("");
+				answer_labelC.setText("");				number_right.setText("WINER!!");
+				frame.add(number_right);
+			}
+		}
 
-		buttonA.setEnabled(false);
-		buttonB.setEnabled(false);
-		buttonC.setEnabled(false);
-		label.setEnabled(false);
-		niveau.setEnabled(false);
-
-		result = (int) ((correct_guesses / (double) total_questions) * 100);
-
-		textfield.setText("RESULTS!");
-		textarea.setText("");
-		answer_labelA.setText("");
-		answer_labelB.setText("");
-		answer_labelC.setText("");
-
-		number_right.setText("(" + correct_guesses + "/" + total_questions + ")");
-		percentage.setText(result + "%");
-
-		frame.add(number_right);
-		frame.add(percentage);
-
-	}
+}
 }
