@@ -64,6 +64,7 @@ public class Quiz implements ActionListener {
 			'B'};
 
 	char answer;
+	int ques;
 	int index;
 	int correct_guesses = 0;
 	int total_questions = questions.length;
@@ -222,18 +223,18 @@ public class Quiz implements ActionListener {
 		}
 		else{
 				{
-					textfield.setText("Question " + (index + 1)+ "/" + 15 );
+					textfield.setText("Question " + (ques + 1)+ "/" + 15 );
 					jlabel.setText(questions[index]);
 					answer_labelA.setText(options[index][0]);
 					answer_labelB.setText(options[index][1]);
 					answer_labelC.setText(options[index][2]);
 					timer.start();
 				}
-				if (index <= 4) {
+				if (index <= 5) {
 					niveau.setText("N1");
-				} else if (index <=9) {
+				} else if (index <=11) {
 					niveau.setText("N2");
-				} else if (index <= 14) {
+				} else if (index <= 17) {
 					niveau.setText("N3");
 				}
 			}
@@ -281,6 +282,7 @@ public class Quiz implements ActionListener {
 			answer_labelB.setForeground(new Color(255, 0, 0));
 		if (answers[index] != 'C')
 			answer_labelC.setForeground(new Color(255, 0, 0));
+		ques++;
 
 		Timer pause = new Timer(1000, new ActionListener() {
 
@@ -313,7 +315,7 @@ public class Quiz implements ActionListener {
 		
 		
 		
-		if(index==5 && correct_guesses<=3){
+		if(index==5 && correct_guesses<3){
 			buttonA.setVisible(false);
 			buttonB.setVisible(false);
 			buttonC.setVisible(false);
@@ -329,7 +331,7 @@ public class Quiz implements ActionListener {
 			number_right.setText("LOSER");
 			frame.add(number_right);
 			
-		}else if(index==11 && correct_guesses<=7){
+		}else if(index==11 && correct_guesses<6){
 			buttonA.setVisible(false);
 			buttonB.setVisible(false);
 			buttonC.setVisible(false);
@@ -337,14 +339,14 @@ public class Quiz implements ActionListener {
 			percentage.setVisible(false);
 			
 			jlabel.setText("");
-			seconds_left.setText("");
+			seconds_left.setVisible(false);
 			answer_labelA.setText("");
 			answer_labelB.setText("");
 			answer_labelC.setText("");			number_right.setText("LOSER");
 			frame.add(number_right);
 		}
 		else if(index==17){
-			if(correct_guesses<=12){
+			if(correct_guesses<10){
 				buttonA.setVisible(false);
 				buttonB.setVisible(false);
 				buttonC.setVisible(false);
@@ -352,7 +354,7 @@ public class Quiz implements ActionListener {
 				percentage.setVisible(false);
 				
 				jlabel.setText("");
-				seconds_left.setText("");
+				seconds_left.setVisible(false);
 				answer_labelA.setText("");
 				answer_labelB.setText("");
 				answer_labelC.setText("");				number_right.setText("LOSER");
@@ -367,7 +369,7 @@ public class Quiz implements ActionListener {
 				percentage.setVisible(false);
 				
 				jlabel.setText("");
-				seconds_left.setText("");
+				seconds_left.setVisible(false);
 				answer_labelA.setText("");
 				answer_labelB.setText("");
 				answer_labelC.setText("");				number_right.setText("WINER!!");
