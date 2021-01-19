@@ -342,7 +342,8 @@ public class Quiz implements ActionListener {
 			seconds_left.setVisible(false);
 			answer_labelA.setText("");
 			answer_labelB.setText("");
-			answer_labelC.setText("");			number_right.setText("LOSER");
+			answer_labelC.setText("");			
+			number_right.setText("LOSER");
 			frame.add(number_right);
 		}
 		else if(index==17){
@@ -357,7 +358,8 @@ public class Quiz implements ActionListener {
 				seconds_left.setVisible(false);
 				answer_labelA.setText("");
 				answer_labelB.setText("");
-				answer_labelC.setText("");				number_right.setText("LOSER");
+				answer_labelC.setText("");				
+				number_right.setText("LOSER");
 				frame.add(number_right);
 			}
 			else{
@@ -372,9 +374,16 @@ public class Quiz implements ActionListener {
 				seconds_left.setVisible(false);
 				answer_labelA.setText("");
 				answer_labelB.setText("");
-				answer_labelC.setText("");				number_right.setText("WINER!!");
+				answer_labelC.setText("");				
+				number_right.setText("WINER!!");
 				frame.add(number_right);
 			}
+		}
+		else {
+			
+			correct_guesses=0;
+			index++;
+			nextQuestion();
 		}
 
 }
